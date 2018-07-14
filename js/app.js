@@ -3,7 +3,7 @@ class Enemy {
    
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    constructor(x, y, speed){
+    constructor(x, y, speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
@@ -15,14 +15,20 @@ class Enemy {
     
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
-    update(){
+    update(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
+        this.x = this.x+(this.speed*dt);
+        if (this.x >= 500){
+            this.x = -10;
+            this.y = rows[Math.floor(Math.random() * rows.length)];
+        }
+
     }
 
     // Draw the enemy on the screen, required method for game
-    render(){
+    render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     }
 
@@ -33,21 +39,21 @@ class Enemy {
 // a handleInput() method.
 class Player {
 
-    constructor(x, y){
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-boy.png';
     }
 
-    update(){
+    update() {
 
     }
 
-    render(){
+    render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    handleInput(){
+    handleInput() {
 
     }
 }
@@ -60,16 +66,18 @@ const player = new Player(200, 400);
 const allEnemies = [];
 
 const rows = [64, 147, 230];
+
+//Returns a random integer between given parameters
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
+//Creates all three enemies and placed on random y position
 for (let i = 0; i < 3; i++) {
-    const x = Math.random();
+    const x = -10;
     const y = rows[Math.floor(Math.random() * rows.length)];
-    console.log(y);
     const speed = getRandomInt(10,50);
     allEnemies.push(new Enemy(x,y,speed));
 }
