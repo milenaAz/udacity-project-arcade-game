@@ -3,9 +3,10 @@ class Enemy {
    
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    constructor(x, y){
+    constructor(x, y, speed){
         this.x = x;
         this.y = y;
+        this.speed = speed;
 
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
@@ -53,10 +54,25 @@ class Player {
 
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+const player = new Player(200, 400);
+// Place all enemy objects in an array called allEnemies
+const allEnemies = [];
 
+const rows = [64, 147, 230];
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 
+for (let i = 0; i < 3; i++) {
+    const x = Math.random();
+    const y = rows[Math.floor(Math.random() * rows.length)];
+    console.log(y);
+    const speed = getRandomInt(10,50);
+    allEnemies.push(new Enemy(x,y,speed));
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
