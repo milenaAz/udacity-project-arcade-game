@@ -49,12 +49,26 @@ class Player {
 
     }
 
+    //draw the image on canvas
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
-    handleInput() {
-
+    //handles the move of player based on keypress
+    handleInput(keypress) {
+        switch (keypress) {
+            case 'left':
+                this.x -= 100;
+                break;
+            case 'right':
+                this.x += 100;
+                break;
+            case 'up':
+                this.y -= 83;
+                break;
+            case 'down':
+                this.y += 83;
+        }
     }
 }
 
@@ -62,9 +76,11 @@ class Player {
 // Now instantiate your objects.
 // Place the player object in a variable called player
 const player = new Player(200, 400);
+
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 
+//all possible positions for an enemy
 const rows = [64, 147, 230];
 
 //Returns a random integer between given parameters
