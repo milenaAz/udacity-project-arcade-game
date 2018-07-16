@@ -8,3 +8,4 @@ frontend-nanodegree-arcade-game
 
 ## How to play
 	Just press any arrow key and start  playing.
+	The game is hosted here: https://milenaaz.github.io/udacity-project-arcade-game/index.html
