@@ -20,7 +20,6 @@ class Enemy {
         // which will ensure the game runs at the same speed for
         // all computers.
         this.x = this.x+(this.speed*dt);
-       console.log(this.speed);
         if (this.x >= 500){
             this.x = -10;
             this.y = rows[Math.floor(Math.random() * rows.length)];
@@ -145,7 +144,7 @@ function getRandomInt(min, max) {
 for (let i = 0; i < 3; i++) {
     const x = -10;
     const y = rows[Math.floor(Math.random() * rows.length)];
-    const speed = getRandomInt(100,500);
+    const speed = getRandomInt(100,200);
     allEnemies.push(new Enemy(x,y,speed));
 }
 
