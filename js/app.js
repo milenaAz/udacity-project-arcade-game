@@ -25,6 +25,7 @@ class Enemy {
             this.y = rows[Math.floor(Math.random() * rows.length)];
         }
 
+        //check if there is any collisions
         this.checkCollision();
     }
 
@@ -33,6 +34,7 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     }
 
+    //check if player's position make a collision
     checkCollision() {
         if(player.x < this.x + 80 &&
            player.x + 80 > this.x &&
@@ -42,7 +44,6 @@ class Enemy {
                 player.y = 400;
         }
     }
-
 }
 
 // Now write your own player class
@@ -50,10 +51,11 @@ class Enemy {
 // a handleInput() method.
 class Player {
 
-    constructor(x, y) {
+    constructor(x, y, level) {
         this.x = x;
         this.y = y;
         this.sprite = 'images/char-boy.png';
+        this.level = 1;
     }
 
     update() {  
@@ -93,10 +95,12 @@ class Player {
         }
     }
 
+    //if player reach the water block reset the position and level up
     winGame(){
         if(this.y < -50){
             this.x = 200;
             this.y = 400;
+            this.level += 1;
         }
     }
 }
