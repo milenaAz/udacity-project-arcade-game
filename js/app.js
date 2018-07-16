@@ -144,7 +144,7 @@ function getRandomInt(min, max) {
 for (let i = 0; i < 3; i++) {
     const x = -10;
     const y = rows[Math.floor(Math.random() * rows.length)];
-    const speed = getRandomInt(50,200);
+    const speed = getRandomInt(100,200);
     allEnemies.push(new Enemy(x,y,speed));
 }
 
