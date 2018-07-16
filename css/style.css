@@ -1,3 +1,10 @@
 body {
     text-align: center;
 }
+
+.level {
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}

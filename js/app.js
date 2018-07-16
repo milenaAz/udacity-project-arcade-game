@@ -42,6 +42,7 @@ class Enemy {
            60 + player.y > this.y) {
                 player.x = 200;
                 player.y = 400;
+                player.resetLevel();
         }
     }
 }
@@ -59,7 +60,10 @@ class Player {
     }
 
     update() {  
-        this.winGame();
+        if(this.winGame()) {
+            this.levelUp();
+        }
+
         if(this.y > 400) {
             this.y = 400;
         }
@@ -95,13 +99,28 @@ class Player {
         }
     }
 
-    //if player reach the water block reset the position and level up
+    //if player reach the water block reset the position to start
     winGame(){
+        const levelUp = document.querySelector('.level');
         if(this.y < -50){
+            console.log('yes');
             this.x = 200;
             this.y = 400;
-            this.level += 1;
+            return true;
         }
+    }
+
+    //level up
+    levelUp() {
+        const levelUp = document.querySelector('.level');   
+        this.level += 1;
+        levelUp.innerHTML = `Level ${this.level}`;
+    }
+
+    resetLevel() {
+        const levelDown = document.querySelector('.level');   
+        this.level = 1;
+        levelDown.innerHTML = `Level ${this.level}`;
     }
 }
 
