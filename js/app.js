@@ -103,7 +103,6 @@ class Player {
     winGame(){
         const levelUp = document.querySelector('.level');
         if(this.y < -50){
-            console.log('yes');
             this.x = 200;
             this.y = 400;
             return true;
@@ -145,7 +144,7 @@ function getRandomInt(min, max) {
 for (let i = 0; i < 3; i++) {
     const x = -10;
     const y = rows[Math.floor(Math.random() * rows.length)];
-    const speed = getRandomInt(10,50);
+    const speed = getRandomInt(50,200);
     allEnemies.push(new Enemy(x,y,speed));
 }
 
