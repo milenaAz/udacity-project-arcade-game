@@ -25,6 +25,7 @@ class Enemy {
             this.y = rows[Math.floor(Math.random() * rows.length)];
         }
 
+        this.checkCollision();
     }
 
     // Draw the enemy on the screen, required method for game
@@ -32,7 +33,17 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     }
 
-};
+    checkCollision() {
+        if(player.x < this.x + 80 &&
+           player.x + 80 > this.x &&
+           player.y < this.y + 60 &&
+           60 + player.y > this.y) {
+                player.x = 200;
+                player.y = 400;
+        }
+    }
+
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -45,8 +56,9 @@ class Player {
         this.sprite = 'images/char-boy.png';
     }
 
-    update() {
-        if(this.y < -50 || this.y > 400) {
+    update() {  
+        this.winGame();
+        if(this.y > 400) {
             this.y = 400;
         }
 
@@ -80,8 +92,14 @@ class Player {
                 this.y += 83;
         }
     }
-}
 
+    winGame(){
+        if(this.y < -50){
+            this.x = 200;
+            this.y = 400;
+        }
+    }
+}
 
 // Now instantiate your objects.
 // Place the player object in a variable called player
