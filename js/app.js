@@ -20,6 +20,7 @@ class Enemy {
         // which will ensure the game runs at the same speed for
         // all computers.
         this.x = this.x+(this.speed*dt);
+       console.log(this.speed);
         if (this.x >= 500){
             this.x = -10;
             this.y = rows[Math.floor(Math.random() * rows.length)];
